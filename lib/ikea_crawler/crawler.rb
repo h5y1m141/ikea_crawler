@@ -47,7 +47,17 @@ module IkeaCrawler
           @subcategory_links.push "http://www.ikea.com/#{o[:href]}"
         end
       end
+    end
 
+    def fetch_product_page_links(sub_category)
+      @page_source = open(sub_category,"User-Agent" => user_agent)
+      doc = Nokogiri::HTML.parse(@page_source, nil)
+      doc.css("#productLists > .gridRow").each do |elem|
+        elem.css("div > div > a").each do |o|
+          # puts "base url ---> #{o[:href]}"
+          puts "http://www.ikea.com#{o[:href]}" if o[:href].match(/^\/jp\/ja\/catalog\/products\/+/)
+        end
+      end
     end
 
     def show_subcategory_links

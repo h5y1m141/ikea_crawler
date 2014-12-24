@@ -1,9 +1,10 @@
 require 'ikea_crawler'
 
 crawler = IkeaCrawler::Crawler.new
-# crawler.run
-# crawler.show_subcategory_links
+crawler.run
 
-url = "http://www.ikea.com/jp/ja/catalog/categories/departments/bathroom/20719/"
-crawler.fetch_product_page_links url
+crawler.subcategory_links.each do |page|
+  crawler.fetch_product_page_links page
+  sleep 3
+end
 

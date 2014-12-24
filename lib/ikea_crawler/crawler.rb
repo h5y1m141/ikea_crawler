@@ -18,7 +18,7 @@ module IkeaCrawler
       @subcategory_links = []
       
     end
-    attr_reader :user_agent, :url_list
+    attr_reader :user_agent, :subcategory_links
 
     def run
       main_category_links = [
@@ -36,6 +36,7 @@ module IkeaCrawler
         ]
       for main_category in main_category_links
         fetch_subcategory_links(main_category[:url])
+        sleep 3
       end
     end
 

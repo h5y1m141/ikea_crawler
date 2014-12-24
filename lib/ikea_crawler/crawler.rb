@@ -36,6 +36,7 @@ module IkeaCrawler
         ]
       for main_category in main_category_links
         fetch_subcategory_links(main_category[:url])
+        sleep 3
       end
     end
 

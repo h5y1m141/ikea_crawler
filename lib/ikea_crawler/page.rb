@@ -14,6 +14,10 @@ module IkeaCrawler
     end
     attr_accessor :permalinks
 
+    def persist
+      return true
+    end
+
     
   end
 end
